@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Java: Fundamentos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Java Fundamentos</h1>
+					<p>Tipos de datos, comentarios, variables, operadores, Strings, Instrucciones de control.</p>
+					<br>
+					<p>
+						<small>By <a href="https://twitter.com/gustavofersan" target="_blank">Gustavo Fernández</a> / <a href="https://twitter.com/gustavofersan" target="_blank">@gustavofersan</a></small>
+					</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Tipos de datos</h2>
+						<p>
+							8 tipos de datos básicos: byte, short, int, long, float, double, char, boolean
+						</p>
+					</section>
+					<section>
+						<p>Ejemplos:</p>
+						<pre><code class="java">
+byte b = 1;
+short s = 12;
+int age = 52;
+long stock = 50L;
+float weight = 12.0F;
+double price = 20.5;
+char c = 'u';
+boolean isInStock = true;
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h2>Comentarios</h2>
+					<pre><code class="java">/**
+* Returns a hash code for this string.
+* using {@code int} arithmetic, where {@code s[i]} is the
+* <i>i</i>th character of the string, {@code n} is the length of
+* the string, and {@code ^} indicates exponentiation.
+*/
+public int hashCode() {
+    int h = hash;
+    if (h == 0 && value.length > 0) {
+        char val[] = value;
+	    /*
+	    The hash code for a object is computed as
+	    s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+	    */
+        for (int i = 0; i < value.length; i++) {
+            h = 31 * h + val[i];
+        }
+        hash = h;
+    }
+    return h; // return a hash code value for this object.
+}</code></pre>
+				</section>
+
+				<section>
+					<h2>Variables</h2>
+					<p>
+						tipo identificador [= valor];
+					</p>
+					<p style="text-align:left">
+						<strong>Identificadores:</strong>
+						<ul>
+							<li>Debe iniciar con una letra, underscore (_) o signo de dolar ($).</li>
+							<li>No puede contener puntuación, espacios o guiones.</li>
+							<li>No puede ser una palabra reservada.</li>
+						</ul>
+					</p>
+				</section>
+
+				<section>
+					<h2>Palabras reservadas</h2>
+					<img src="img/keywords.jpg" height="450" width="780" alt="">
+				</section>
+
+				<section>
+					<section>
+						<h2>Operadores</h2>
+						<table>
+							<tr>
+								<th>Operators</th>
+								<th>Precedence</th>
+							</tr>
+							<tr>
+								<td>postfix</td>
+								<td><code><em>expr</em>++ <em>expr</em>--</code></td>
+							</tr>
+							<tr>
+								<td>unary</td>
+								<td><code>++<em>expr</em> --<em>expr</em> +<em>expr</em> -<em>expr</em> ~ !</code></td>
+							</tr>
+							<tr>
+								<td>multiplicative</td>
+								<td><code>* / %</code></td>
+							</tr>
+							<tr>
+								<td>additive</td>
+								<td><code>+ -</code></td>
+							</tr>
+							<tr>
+								<td>shift</td>
+								<td><code>&lt;&lt; &gt;&gt; &gt;&gt;&gt;</code></td>
+							</tr>
+							<tr>
+								<td>relational</td>
+								<td><code>&lt; &gt; &lt;= &gt;= instanceof</code></td>
+							</tr>
+							<tr>
+								<td>equality</td>
+								<td><code>== !=</code></td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<table>
+							<tr>
+								<th>Operators</th>
+								<th>Precedence</th>
+							</tr>
+							<tr>
+								<td>bitwise AND</td>
+								<td><code>&amp;</code></td>
+							</tr>
+							<tr>
+								<td>bitwise exclusive OR</td>
+								<td><code>^</code></td>
+							</tr>
+							<tr>
+								<td>bitwise inclusive OR</td>
+								<td><code>|</code></td>
+							</tr>
+							<tr>
+								<td>logical AND</td>
+								<td><code>&amp;&amp;</code></td>
+							</tr>
+							<tr>
+								<td>logical OR</td>
+								<td><code>||</code></td>
+							</tr>
+							<tr>
+								<td>ternary</td>
+								<td><code>? :</code></td>
+							</tr>
+							<tr>
+								<td>assignment</td>
+								<td><code>= += -= *= /= %= &amp;= ^= |= &lt;&lt;= &gt;&gt;= &gt;&gt;&gt;=</code></td>
+							</tr>
+						</table>
+					</section>
+				</section>
+
+				<section>
+					<h2>Strings</h2>
+					<pre><code class="java">
+String name = "James Gosling";
+String firstName = new String("James");
+					</code></pre>
+				</section>
+
+				<section>
+					<section>
+						<h2>Instrucciones de control</h2>
+					</section>
+					<section>
+						<h2>if-else</h2>
+						<pre><code class="java">
+if (edad >= 18) {
+	System.out.println("Mayor de edad!");
+}
+
+if (producto.getStock() > 0) {
+	efectuarVenta(venta);
+	reducirStock(producto, venta.getCantidad());
+} else {
+	mostrarMensaje("No hay stock: " + producto.getDescription());
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>switch</h2>
+						<pre><code class="java">
+int mes = 8;
+String nombreMes;
+switch(mes) {
+	case 1:
+		nombreMes = "Enero";
+		break;
+	case 2:
+		nombreMes = "Febrero";
+		break;
+	...
+	case 12:
+		nombreMes = "Diciembre";
+		break;
+	default:
+		nombreMes = null;
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>while / do-while</h2>
+						<pre><code class="java">
+int count = 1;
+while (count < 11) {
+	System.out.println("Count is: " + count);
+	count++;
+}
+
+int count = 1;
+do {
+	System.out.println("Count is: " + count);
+	count++;
+} while (count < 11);
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>for / for-each</h2>
+						<pre><code class="java">
+String[] nombres = { "Juan", "Jorge", "Luis", "Rosa" };
+for (int i = 0; i < nombres.length; i++) {
+	System.out.println(nombres[i]);
+}
+
+for (String nombre : nombres) {
+	System.out.println(nombre);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>continue / break</h2>
+						<pre><code class="java">
+String[] nombres = { "Juan", "Jorge", "Luis", "Rosa" };
+// Encontrar índice de algún nombre
+String nombreABuscar = "Juan";
+int indiceEncontrado = -1;
+for (int i = 0; i < nombres.length; i++) {
+	if (nombreABuscar.equals(nombres[i])) {
+		indiceEncontrado = i;
+		break;
+	}
+}
+
+// No mostrar nombres que inicien en "J"
+
+for (String nombre : nombres) {
+	if (nombres.startsWith("J")) {
+		continue;
+	}
+	System.out.println(nombre);
+}
+						</code></pre>
+					</section>
+
+					<section>
+						<h3>Operador ternario</h3>
+						<h3>(var = bool expression ? val when true : val when false)</h3>
+						<pre><code class="java">
+int edad = 12;
+String estado = edad >= 18 ? "Mayor de edad" : "Menor de edad";
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Preguntas</h2>
+						<img src="img/thinking.png" height="192" width="186" alt="">
+					</section>
+					<section>
+						<h3>Seleccione los identificadores válidos:</h3>
+						<ul>
+							<li>$variable</li>
+							<li>@variable</li>
+							<li>dowhile</li>
+							<li>Return</li>
+							<li>variable%entera</li>
+							<li>_23dias</li>
+							<li>assert</li>
+						</ul>
+					</section>
+					<section>
+						<h3>Identifique las declaraciones inválidas:</h3>
+						<ul>
+							<li>char x = 'OR';</li>
+							<li>String saludo = 'Hola Mundo';</li>
+							<li>int entero = 12L;</li>
+							<li>double decimal = 23.0D;</li>
+							<li>double numero = 23.0d;</li>
+							<li>char d = 12;</li>
+							<li>char c = '\u00F3';</li>
+							<li>boolean b = (2 == 1);</li>
+						</ul>
+					</section>
+
+					<section>
+						<h3>¿Cuál es el valor de la variable <em>codigo</em> al ejecutar las siguientes sentencias?</h3>
+						<pre><code class="java">
+int codigo = 0;
+codigo = true ? -2 : 2;
+codigo = codigo > 0 ? 0 : 10;
+System.out.println(codigo);
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ejercicios</h2>
+						<img src="img/duke-drinking.png">
+					</section>
+
+					<section>
+						Escribir un programa que reciba la nota del examen parcial y final de un alumno por consola y calcule la nota final (promedio), el programa debe validar que solo se reciban dos notas por consola y que dichas notas esten entre los valores de 0 y 20, en caso no cumpla alguna de estas validaciones mostrar un mensaje.
+					</section>
+				</section>
+
+				<section>
+					<img src="img/logo.png">
+					<p>System.exit(0);</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
