@@ -1,0 +1,85 @@
+Sobrecarga: Cuando existe más de un método dentro de una clase con el mismo nombre pero diferente lista de parámetros
+
+Clase String:
+Tiene sobracargado el método substring()
+.substring(a, b) -> a indice desde donde, b: indice hasta antes de donde
+.substring(a) -> a: desde donde (Hasta el final)
+
+Shortcuts Eclipse
+=================
+
+Ctrl + Shift + F = Formatear el código
+Ctrl + Shift + T = Abrir la definicion de un Tipo
+Ctrl + o = Recorrer entre los miembros de clase
+Ctrl + F11 = Ejecutar
+
+syso > Ctrl + Space
+main > Ctrl + Space
+
+Ir al repositorio local ->
+	Windows + R
+	.m2
+
+
+Maven
+=====
+
+mvn -version
+
+Build System
+
+Estandarización de proyectos
+Gestión de dependencias (Librerias)
+
+- Tareas
+
+clean		Limpia los binarios generados anteriormente
+compile		Compila todo el código fuente y lo coloca en la carpeta target
+package		Empaqueta tu proyecto en un (jar, war, ear)
+install		Instala tu paquete en el repositorio local
+
+carpeta target: Donde se guardan los archivos generados (.class)
+
+
+mvn clean
+mvn compile
+mvn package
+mvn install
+
+Desde Eclipse:
+
+Run As... > Maven Clean
+Run As... > Maven Install
+
+
+Abrir un proyecto Maven
+=======================
+File
+Import...
+Existing Maven Projects
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
