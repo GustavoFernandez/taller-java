@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Maven</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<img src="img/maven.png" width="60%">
+				</section>
+
+				<section>
+					<p>Herramienta escrita en Java para la gestión y construcción de proyectos Java, basado en el concepto de Project Object Model (POM), Maven puede manejar la construcción, reportes, documentación, versionamiento de los proyectos desde un archivo central (pom.xml).</p>
+					<p>¡Incluso puedes extender las capacidades de Maven mediante plugins!</p>
+				</section>
+
+				<section>
+					<section>
+						<h3>Glosario</h3>
+						<ul>
+							<li><strong>Dependencia:</strong> Libreria de la cual depende tu proyecto</li>
+							<li><strong>Artefacto:</strong> Un (proyecto) empaquetado (jar, war, ear)</li>
+							<li><strong>Plugin:</strong> Complemento, añade una función adicional a la herramienta</li>
+							<li><strong>Prueba unitaria:</strong> Prueba de una unidad de código (método)</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Características</h2>
+					</section>
+
+					<section>
+						<h3>Estructura estandar de proyectos</h3>
+						<img src="img/maven/project-structure.png" style="border:none">
+					</section>
+
+					<section>
+						<h3>Gestión de dependencias</h3>
+						<pre><code class="xml">
+&lt;dependencies&gt;
+	&lt;dependency&gt;
+		&lt;groupId&gt;mysql&lt;/groupId&gt;
+		&lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+		&lt;version&gt;5.1.36&lt;/version&gt;
+	&lt;/dependency&gt;
+
+	&lt;dependency&gt;
+		&lt;groupId&gt;pe.edu.unac&lt;/groupId&gt;
+		&lt;artifactId&gt;utilitario&lt;/artifactId&gt;
+		&lt;version&gt;1.2&lt;/version&gt;
+	&lt;/dependency&gt;
+&lt;/dependencies&gt;
+						</code></pre>
+					</section>
+
+					<section>
+						<section>
+							<h3>Construcción de proyectos</h3>
+							<img src="img/maven/build.jpg">
+						</section>
+					</section>
+
+					<section>
+						<h3>Versionamiento de artefactos</h3>
+						<img src="img/maven/versioning.jpg">
+					</section>
+
+					<section>
+						<h3>Uso de Plantillas de proyectos (<em>Arquetipos</em>)</h3>
+						<img src="img/maven/archetype.png">
+					</section>
+
+					<section>
+						<h3>Extendible (Plugins)</h3>
+						<pre><code class="xml">
+&lt;plugin&gt;
+	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+	&lt;artifactId&gt;maven-source-plugin&lt;/artifactId&gt;
+	&lt;version&gt;3.0.0&lt;/version&gt;
+	&lt;executions&gt;
+		&lt;execution&gt;
+			&lt;id&gt;attach-sources&lt;/id&gt;
+			&lt;phase&gt;package&lt;/phase&gt;
+			&lt;goals&gt;
+				&lt;goal&gt;jar&lt;/goal&gt;
+			&lt;/goals&gt;
+		&lt;/execution&gt;
+	&lt;/executions&gt;
+&lt;/plugin&gt;
+&lt;plugin&gt;
+	&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+	&lt;artifactId&gt;maven-javadoc-plugin&lt;/artifactId&gt;
+	&lt;version&gt;2.10.3&lt;/version&gt;
+	&lt;executions&gt;
+		&lt;execution&gt;
+			&lt;id&gt;attach-javadocs&lt;/id&gt;
+			&lt;phase&gt;package&lt;/phase&gt;
+			&lt;goals&gt;
+				&lt;goal&gt;jar&lt;/goal&gt;
+			&lt;/goals&gt;
+		&lt;/execution&gt;
+	&lt;/executions&gt;
+&lt;/plugin&gt;
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Ciclo de Vida</h2>
+					</section>
+
+					<section>
+						<h3>default</h3>
+						<p>Maneja la construcción y despliegue del proyecto</p>
+					</section>
+
+					<section>
+						<h3>clean</h3>
+						<p>Maneja la limpieza del proyecto</p>
+					</section>
+
+					<section>
+						<h3>site</h3>
+						<p>Maneja la creación de la documentación del sitio</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Fases</h2>
+					</section>
+					<section>
+						<h3>Fases (principales) del ciclo de vida <em>default</em></h3>
+						<ul>
+							<li><strong>validate</strong> - Valida que el proyecto sea correcto</li>
+							<li><strong>compile</strong> - Compila el código fuente del proyecto</li>
+							<li><strong>test</strong> - Ejecuta las pruebas unitarias del proyecto</li>
+							<li><strong>package</strong> - Empaqueta el proyecto, p.e. en un JAR.</li>
+							<li><strong>verify</strong> - Verifica los resultados de las pruebas de integración</li>
+							<li><strong>install</strong> - Instala el paquete en el repositorio local, para su uso como dependencia en otros proyectos localmente</li>
+							<li><strong>deploy</strong> - Copia o despliega el paquete en un repositorio remoto</li>
+						</ul>
+					</section>
+					<section>
+						<p>Las fases del ciclo de vida son secuenciales, esto quiere decir que una fase de orden superior depende de la correcta ejecución de las anteriores. Las fases anteriores a la solicitada se ejecutan automaticamente.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Creación de un proyecto Maven desde Eclipse</h2>
+					</section>
+					<section>
+						<p>Ir al menú File > New > Maven Project , Si no encontramos Maven Project en el menú vamos a Other y lo buscamos</p>
+						<img src="img/maven/maven.eclipse.1.jpg">
+					</section>
+					<section>
+						<p>No usaremos arquetipos por el momento, seleccionamos el checkbox que dice: <em>Create a simple project</em>, Clic en Next</p>
+						<img src="img/maven/maven.eclipse.2.jpg">
+					</section>
+					<section>
+						<p>Ingresamos un groupId, artifactId, version y packaging, Clic en finish</p>
+						<img src="img/maven/maven.eclipse.3.jpg">
+					</section>
+					<section>
+						<p>Si es la primera vez que usamos Maven deberemos contar con conexión a internet para que Maven pueda bajar algunos plugins y/o dependencias que requiere. Luego podremos visualizar nuestro proyecto en la vista <em>Package Explorer</em></p>
+						<img src="img/maven/maven.eclipse.4.jpg">
+					</section>
+					<section>
+						<p>Abrimos el pom.xml y colocaremos algunas configuraciones importantes para todo proyecto, nuestro Xml quedaría así:</p>
+						<pre><code class="xml">
+&lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;
+	xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
+	&lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+	&lt;groupId&gt;com.gustavo&lt;/groupId&gt;
+	&lt;artifactId&gt;mi-primer-proyecto&lt;/artifactId&gt;
+	&lt;version&gt;1.0&lt;/version&gt;
+
+	&lt;properties&gt;
+		&lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+		&lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+		&lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+	&lt;/properties&gt;
+&lt;/project&gt;
+						</code></pre>
+					</section>
+					<section>
+						<p>Para que Eclipse reconozca los cambios efectuados en el pom daremos clic derecho en el proyecto > Maven > Update Project..., Seleccionamos el proyecto que deseamos actualizar y damos clic en el botón <em>Ok</em></p>
+						<img src="img/maven/maven.eclipse.5.jpg">
+					</section>
+					<section>
+						<p>Ya con esto tenemos configurado nuestro proyecto Maven con lo básico y podremos empezar a desarrollar nuestros programas Java. Recordemos que podemos ejecutar los comandos de Maven en Eclipse seleccionando el proyecto > Run As y eligiendo la opción que deseemos</p>
+						<img src="img/maven/maven.eclipse.6.jpg">
+					</section>
+				</section>
+
+				<section>
+					<img src="img/logo.png">
+					<pre style="width:180px"><code class="java">System.exit(0);</code></pre>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
