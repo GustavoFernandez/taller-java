@@ -9,5 +9,14 @@ public class StringUtil {
 		demasCaracteres = demasCaracteres.toLowerCase();
 		return primerCaracter + demasCaracteres;
 	}
-	
+
+	public static String truncate(String cadena, int maximoCaracteres) {
+		int tamanoCadena = cadena.length();
+		if (tamanoCadena <= maximoCaracteres) {
+			return cadena;
+		}
+		String cadenaCortada = cadena.substring(0, maximoCaracteres);
+		return cadenaCortada;
+	}
+
 }
