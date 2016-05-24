@@ -1,0 +1,22 @@
+Ctrl + Shift + o -> Importar todo
+Ctrl + M -> Maximizar vista de codigo
+Crtl + Shift + C -> Comentar XML
+
+Repositorio Central
+-------------------
+search.maven.org
+
+
+Run As... > Maven Build... > site
+mvn site
+\target\site
+
+
+java -jar : Ejecutar el jar
+META-INF\MANIFEST.MF	: Descriptor del jar
+
+
+Comentario en XML  <!--   -->
+
+${} -> Invocamos a una propiedad
+${project.build.directory} -> Propiedad que hace referencia a la carpeta target del proyecto

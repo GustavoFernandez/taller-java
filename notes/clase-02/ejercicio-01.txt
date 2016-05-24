@@ -1,0 +1,13 @@
+Ejercicio 01
+============
+
+Añadir un nuevo método a la clase StringUtil del proyecto utilitario, Este método tendrá por nombre truncate y recibirá dos parámetros, como primer parámetro la cadena a truncar y como segundo parámetro el número de caracteres que como máximo tendrá la cadena truncada. Lo que debe hace el método truncate es: Dada una cadena, cortarla de tal forma que como máximo tenga la cantidad de caracteres que se indica en el segundo parámetro, p.e.:
+
+Caso de prueba			Valor esperado
+==============================================
+truncate("hola mundo", 7)	"hola mu"
+truncate("java", 10)		"java"
+truncate("universidad", 2)	"un"
+truncate("laptop", 6)		"laptop"
+
+Para probar el correcto funcionamiento del nuevo método creado se deberá crear un proyecto Maven que tenga como nombre de artefacto ejercicio-01 y tendrá como dependencia el proyecto utilitario. Este nuevo proyecto tendrá una clase con método main donde se deberán ejecutar los casos de prueba indicados y deberá mostrar en consola el resultado esperado.
