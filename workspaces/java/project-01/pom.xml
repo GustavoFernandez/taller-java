@@ -81,7 +81,7 @@
 							<mainClass>com.gustavo.project.main.Main</mainClass>
 						</manifest>
 					</archive>
-					<!-- Se ejecuta por defecto en package -->
+					<!-- El goal jar se ejecuta por defecto en la fase package -->
 				</configuration>
 			</plugin>
 		</plugins>

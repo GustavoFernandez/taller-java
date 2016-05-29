@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>java.lang.String</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1 style="text-transform:none">java.lang.String</h1>
+				</section>
+
+				<section>
+					<p>Con la clase String representamos cadenas de texto, es una clase especial ya que se pueden crear instancias de esta clase sin necesidad de utilizar la palabra reservada <em>new</em>. No es necesario importar la clase String ya que pertenece al paquete <em>java.lang</em></p>
+					<p>Internamente almacena un arreglo de caracteres que contiene cada caracter de la cadena.</p>
+				</section>
+
+				<section>
+					<section>
+						<h3>Algunos Métodos</h3>
+					</section>
+					<section>
+						<h3 style="text-transform:none">substring(int beginIndex) / substring(int beginIndex, int endIndex)</h3>
+						<p>El método substring está sobrecargado en la clase String, retorna una subcadena del String</p>
+						<p><em>beginIndex</em>: índice desde donde, <em>endIndex</em>: índice hasta antes de donde</p>
+						<p>
+							<pre><code class="java">
+"Hola".substring(2) -> "la"
+"alumno".substring(1, 4) -> "lum" 
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">length()</h3>
+						<p>Retorna el tamaño del String (El número de caracteres que posee)</p>
+						<p>
+							<pre><code class="java">
+"Hola".length() -> 4
+"alumno".length() -> 6
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">equals(Object object)</h3>
+						<p>Verifica la igualdad de dos Strings caracter por caracter.</p>
+						<p>
+							<pre><code class="java">
+"Hola".equals("hola") -> false
+"alumno".equals("alumno") -> true
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">equalsIgnoreCase(String anotherString)</h3>
+						<p>Compara dos Strings ignorando mayúsculas y minúsculas</p>
+						<p>
+							<pre><code class="java">
+"Hola".equalsIgnoreCase("HOLA") -> true
+"alumno".equalsIgnoreCase("alumno") -> true
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">charAt(int index)</h3>
+						<p>Retorna el caracter del índice especificado</p>
+						<p>
+							<pre><code class="java">
+"Hola".charAt(0) -> 'H'
+"alumno".charAt(2) -> 'u'
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">contains(CharSequence cs)</h3>
+						<p>Retorna true si el String contiene la cadena pasada por parámetro.</p>
+						<p>
+							<pre><code class="java">
+"Hola".contains("ola") -> true
+"alumno".contains("o") -> true
+"smartphone".contains("x") -> false
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">startsWith(String prefix) / endsWith(String suffix)</h3>
+						<p>Verifica si la cadena inicia o termina con determinada cadena.</p>
+						<p>
+							<pre><code class="java">
+"Hola".endsWith("ola") -> true
+"alumno".startsWith("lumno") -> false
+"smartphone".startsWith("s") -> true
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">trim(CharSequence cs)</h3>
+						<p>Remueve los espacios en blanco del inicio y del final de la cadena.</p>
+						<p>
+							<pre><code class="java">
+"Hola".contains("ola") -> true
+"alumno".contains("o") -> true
+"smartphone".contains("x") -> false
+							</code></pre>
+						</p>
+					</section>
+					
+				</section>
+
+				<section>
+					<section>
+						<h2>Maneras de crear un String</h2>
+					</section>
+
+					<section>
+						<p>
+							<pre><code class="java">
+// Asignandole un literal
+String saluda = "Hola Mundo";
+// Utilizando new
+String nombre = new String("Julio");
+String plato = new String(new char[] { 'l', 'o', 'c', 'r', 'o' });
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3>Diferencias:</h3>
+						<p>Cuando creamos un String como literal, el compilador reemplaza todas las ocurrencias de cadenas iguales por una referencia hacía un mismo String, es decir que todos estos Strings estarán apuntando hacía el mismo lugar de memoria, es así que:</p>
+						<p>
+							<pre><code class="java">
+String cadena = "abcd";
+String otraCadena = "abcd";
+String concatenacion = "ab" + "cd";
+System.out.println(cadena == otraCadena); // true
+System.out.println(concatenacion == otraCadena); // true
+// operador igual cuando se aplica a objetos compara referencias no valores
+// En las tres líneas solo se creo un objeto
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<p>La palabra clave <em>new</em> tiene la caracteristica que siempre crea un nuevo espacio en memoria para almacenar los objetos, es decir cada vez que usemos <em>new</em> estamos creando un nuevo objeto, almacenado en una dirección distinta de memoria.</p>
+						<p>
+							<pre><code class="java">
+String cadena = new String("abcd");
+String otraCadena = String("abcd");
+String concatenacion = new String("ab" + "cd");
+System.out.println(cadena == otraCadena); // false
+System.out.println(concatenacion == otraCadena); // false
+// operador igual cuando se aplica a objetos compara referencias no valores
+// En las tres líneas se crearon tres objetos
+							</code></pre>
+						</p>
+					</section>
+					<section>
+						<h3>Pool de Strings</h3>
+						<img src="img/string-pool.png">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Preguntas</h2>
+						<img src="img/thinking.png" height="192" width="186" alt="">
+					</section>
+					<section>
+						<h2 style="text-transform:none">true o false</h2>
+						<pre><code class="java">
+"hola" == new String("hola") // 1
+"hola" == "hola" // 2
+"hola".equals("hola") // 3
+"ho" + "la" == "hola" // 4
+"holA" == "Hola" // 5
+"HOLA".equalsIgnoreCase("holA") // 6
+new String("hola") == new String("hola") // 7
+						</code></pre>
+					</section>
+					<section>
+						<h2 style="text-transform:none">¿Cuál es el valor de retorno?</h2>
+						<pre><code class="java">
+"cadena".substring(2) // 1
+"cadena".substring(1, 2) // 2
+"cadena".startsWith("cade") // 3
+"cadena".endsWith("cade") // 4
+"cadena".contains("cade") // 5
+"cadena".charAt(1) // 6
+"cadena".length() // 7
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<h2>Recomendación</h2>
+					<p>Siempre que desees comparar la igualdad en cuanto a valores de dos objetos usa el método <strong>equals(Object obj)</strong>. Casi nunca o nunca usarás == con objetos, hay pocos casos de uso en el que querrás comparar si son el mismo objeto.</p>
+				</section>
+
+				<section>
+					<img src="img/logo.png">
+					<pre style="width:180px"><code class="java">System.exit(0);</code></pre>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

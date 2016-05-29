@@ -1,0 +1,72 @@
+1. ¿Cual de los siguientes son nombres válidos de paquetes?
+
+pe.gob.sunedu.do.main	No
+pe.edu.unac.		No
+com.ciber.$paquete.xyz	Sí
+com.123.pack.main	No
+com.return.xyz		No
+
+2. Mencione los tipos primitivos en Java y su peso en bytes de cada uno
+
+8 tipos primitivos
+
+byte    short   int    long     float    double   char     boolean
+1 byte  2 byte  4byte  8 bytes  4 bytes  8 bytes  2 bytes  1 byte
+
+3. Resolver:
+
+"hola".subtring(1)			"ola"
+"hello world".substring(1, 5)		"ello"
+"universidad nacional ".substring(0, 2)	"un"
+
+4. Método para obtener la cantidad de caracteres de un String
+
+getSize()
+size()
+getLength()
+length()		X
+
+5. Son fases del ciclo de vida default de Maven
+
+site
+x package
+x install
+x compile
+clean
+x test
+
+6. Para que se usa el plugin maven-shade-plugin
+
+Para generar un uber jar, o sea para generar un solo jar que contega el codigo compilado de tu proyecto y sus librerias.
+
+7. En que ruta se encuentra el repositorio local de Maven
+
+[home usuario]\.m2\maven\repository\
+X [home usuario]\.m2\repository\
+[home usuario]\maven\.m2\repository\
+[home usuario]\.maven2\repository\
+[home usuario]\.mvn2\repository\
+
+8. Entrada en META-INF\MANIFEST.MF para configurar clase de entrada de un jar
+
+Built-By
+Class-Path
+x Main-Class
+Boot-Class
+Init-Class
+
+9. Comando para ejecutar un jar
+
+java -exec xyz.jar
+x java -jar xyz.jar
+jar -exec xyz.jar
+javac -jar xyz.jar
+java -main xyz.jar
+
+10. Archivo central de configuración de un proyecto Maven
+
+maven.xml
+m2.xml
+mvn.xml
+x pom.xml
+p2m.xml

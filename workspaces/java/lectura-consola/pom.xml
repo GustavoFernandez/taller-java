@@ -2,9 +2,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gustavo</groupId>
-	<artifactId>utilitario</artifactId>
-	<version>1.1</version>
-	<description>Proyecto utilitario, contiene metodos utiles para cualquier proyecto</description>
+	<artifactId>lectura-consola</artifactId>
+	<version>1.0</version>
 
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
@@ -16,31 +15,30 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>3.0.0</version>
+				<artifactId>maven-shade-plugin</artifactId>
+				<version>2.4.3</version>
 				<executions>
 					<execution>
-						<id>generame-codigo-fuente-empaquetado</id>
+						<id>generame-un-solo-jar</id>
 						<phase>package</phase>
 						<goals>
-							<goal>jar</goal>
+							<goal>shade</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<executions>
-					<execution>
-						<id>generame-la-documentacion-en-HTML</id>
-						<phase>package</phase>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.6</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>com.gustavo.consola.main.LecturaConConsole</mainClass>
+						</manifest>
+					</archive>
+					<!-- El goal jar se ejecuta por defecto en la fase package -->
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

@@ -1,0 +1,5 @@
+Shortcuts / Atajos de teclado
+
+Ctrl + Shift + R -> Abrir un recurso
+Alt + Shift + R -> Renombrar una variable
+Ctrl + 1 -> Opciones

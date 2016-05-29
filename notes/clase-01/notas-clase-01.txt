@@ -2,7 +2,7 @@ Sobrecarga: Cuando existe más de un método dentro de una clase con el mismo nomb
 
 Clase String:
 Tiene sobracargado el método substring()
-.substring(a, b) -> a indice desde donde, b: indice hasta antes de donde
+.substring(a, b) -> a índice desde donde, b: índice hasta antes de donde
 .substring(a) -> a: desde donde (Hasta el final)
 
 Shortcuts Eclipse
@@ -57,11 +57,6 @@ Abrir un proyecto Maven
 File
 Import...
 Existing Maven Projects
-
-
-
-
-
 
 
 
