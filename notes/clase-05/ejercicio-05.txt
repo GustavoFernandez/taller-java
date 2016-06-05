@@ -1,0 +1,23 @@
+Ejercicio 05
+============
+
+Añadir un nuevo método a la clase StringUtil del proyecto utilitario (v1.2), Este método tendrá por nombre fullTrim y recibirá como parámetro una cadena. Lo que debe hacer el método fullTrim es: Dada una cadena remover todos los espacios a los extremos (lo que hace el método trim de la clase String) de la cadena y, además, si encuentra espacios de más de un caracter (espacios entre palabras de dos o más espacios) en la cadena, los convierta a espacios de solo un caracter.
+
+Se deben cumplir los siguientes casos de prueba
+
+Caso de prueba					Valor esperado
+==============================================================
+StringUtil.fullTrim(" java ")			"java"
+StringUtil.fullTrim(" hello   world ")		"hello world"
+StringUtil.fullTrim(" caso   de   prueba 1 ")	"caso de prueba 1"
+StringUtil.fullTrim("")				""
+StringUtil.fullTrim("     ")			""
+StringUtil.fullTrim(null)			null
+
+Añadir los respectivos casos de prueba a los test unitarios con jUnit y verificar que se pasen todos los test.
+
+Nota:
+
+Los test se pueden ejecutar con:
+* Seleccionar proyecto > Run As... > Maven test
+* Seleccionar clase de prueba > Run As... > jUnit test

@@ -1,0 +1,33 @@
+No olvidar
+
+* Nombre de paquetes es todo en minuscula: Ejm: java.lang, java.util, pe.edu.unac
+* Nombre de clases en en UpperCamelCase: Ejm: PruebaReverse, String, StringUtil
+* Nombre de las variables y métodos es en lowerCamelCase. Ejm. random(), miEdad
+
+import static
+=============
+Importa todos los miembros static de una clase
+
+ejem:
+
+import static java.lang.Math.*;
+
+
+scopes en Maven
+===============
+
+<scope></scope>
+
+* compile: scope por defecto, dependencia es necesaria la compilación y ejecución
+* system: dependencia no esta en el repositorio, la vamos a referenciar desde el sistema de archivos
+* provided: dependencia es necesaria para compilar, pero no para el empaquetado, la dependencia nos la provee el entorno (ejm: servidor de aplicaciones, jre)
+* test: Dependencia solo es necesaria para las pruebas, no se empaqueta
+* runtime: dependencia no es necesaria para compilar pero si para cuando se ejecute
+
+
+Ctrl + Shift + F -> Formatear el codigo
+
+
+Añadir pruebas unitarias para reverse y capitalizeAllWords
+
+Cuando tengan internet ejecuten Run As.. > Maven test

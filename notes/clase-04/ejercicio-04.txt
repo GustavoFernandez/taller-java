@@ -1,0 +1,29 @@
+Ejercicio 04
+============
+
+Capitalize all words:
+
+public static String capitalizeAllWords(String cadena) {
+		boolean esInicioDePalabra = true;
+		String resultado = "";
+		for (int i = 0; i < cadena.length(); i++) {
+			char caracterActual = cadena.charAt(i);
+
+			char caracterTransformado;
+			if (esInicioDePalabra) {
+				caracterTransformado = Character.toUpperCase(caracterActual);
+			} else {
+				caracterTransformado = Character.toLowerCase(caracterActual);
+			}
+
+			boolean esEspacioEnBlanco = Character.isWhitespace(caracterActual);
+			if (esEspacioEnBlanco) {
+				esInicioDePalabra = true;
+			} else {
+				esInicioDePalabra = false;
+			}
+
+			resultado += caracterTransformado;
+		}
+		return resultado;
+	}

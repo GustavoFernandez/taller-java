@@ -1,0 +1,11 @@
+Ejercicio 03
+============
+
+Añadir un nuevo método a la clase StringUtil del proyecto utilitario, Este método tendrá por nombre reverse y recibirá un parámetro que será un String, El método debe devolver dicho String pero con los caracteres invertidos.
+
+Caso de prueba			Valor esperado
+==============================================
+StringUtil.reverse("java")		"avaj"
+StringUtil.times("hola")		"aloh"
+StringUtil.times("*")			"*"
+StringUtil.times("")			""

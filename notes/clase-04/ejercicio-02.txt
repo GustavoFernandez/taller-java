@@ -1,0 +1,11 @@
+Ejercicio 02
+============
+
+Añadir un nuevo método a la clase StringUtil del proyecto utilitario, Este método tendrá por nombre times y recibirá dos parámetros, como primer parámetro una cadena y como segundo parámetro el número de veces que la cadena se va a repetir. Lo que debe hacer el método times es: Dada una cadena, repetirla cuantas veces indique el segundo parámetro y juntar esto en una nueva cadena
+
+Caso de prueba			Valor esperado
+==============================================
+StringUtil.times("java", 2)		"javajava"
+StringUtil.times("", 4)			""
+StringUtil.times("*", 5)		"*****"
+StringUtil.times("hola ", 2)		"hola hola "
