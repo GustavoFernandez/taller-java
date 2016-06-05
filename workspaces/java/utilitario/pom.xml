@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.gustavo</groupId>
 	<artifactId>utilitario</artifactId>
-	<version>1.1</version>
+	<version>1.2</version>
 	<description>Proyecto utilitario, contiene metodos utiles para cualquier proyecto</description>
 
 	<properties>
@@ -11,6 +11,15 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
