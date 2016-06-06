@@ -1,7 +1,7 @@
 Ejercicio 05
 ============
 
-AÒadir un nuevo mÈtodo a la clase StringUtil del proyecto utilitario (v1.2), Este mÈtodo tendr· por nombre fullTrim y recibir· como par·metro una cadena. Lo que debe hacer el mÈtodo fullTrim es: Dada una cadena remover todos los espacios a los extremos (lo que hace el mÈtodo trim de la clase String) de la cadena y, adem·s, si encuentra espacios de m·s de un caracter (espacios entre palabras de dos o m·s espacios) en la cadena, los convierta a espacios de solo un caracter.
+A√±adir un nuevo m√©todo a la clase StringUtil del proyecto utilitario (v1.2), Este m√©todo tendr√° por nombre fullTrim y recibir√° como par√°metro una cadena. Lo que debe hacer el m√©todo fullTrim es: Dada una cadena remover todos los espacios a los extremos (lo que hace el m√©todo trim de la clase String) de la cadena y, adem√°s, si encuentra espacios de m√°s de un caracter (espacios entre palabras de dos o m√°s espacios) en la cadena, los convierta a espacios de solo un caracter.
 
 Se deben cumplir los siguientes casos de prueba
 
@@ -14,7 +14,10 @@ StringUtil.fullTrim("")				""
 StringUtil.fullTrim("     ")			""
 StringUtil.fullTrim(null)			null
 
-AÒadir los respectivos casos de prueba a los test unitarios con jUnit y verificar que se pasen todos los test.
+A√±adir los respectivos casos de prueba a los test unitarios con jUnit y verificar que se pasen todos los test.
+
+Recomendaci√≥n:
+Primero aplicar un trim() para remover espacios en blanco de los extremos.
 
 Nota:
 
