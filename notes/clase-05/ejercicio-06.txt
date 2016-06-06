@@ -1,0 +1,23 @@
+Ejercicio 06
+============
+
+Añadir un nuevo método a la clase StringUtil del proyecto utilitario (v1.2), Este método tendrá por nombre swapCase y recibirá como parámetro una cadena. Lo que debe hacer el método swapCase es: Dada una cadena pasada como parámetro, intercambiar las masyusculas por minusculas y viceversa por cada caracter.
+
+Se deben cumplir los siguientes casos de prueba
+
+Caso de prueba				Valor esperado
+==============================================================
+StringUtil.swapCase("java")		"JAVA"
+StringUtil.swapCase("JAVA")		"java"
+StringUtil.swapCase("jAvA")		"JaVa"
+StringUtil.swapCase("")			""
+StringUtil.swapCase(" ")		" "
+StringUtil.swapCase(null)		null
+
+Añadir los respectivos casos de prueba a los test unitarios con jUnit y verificar que se pasen todos los test.
+
+Nota:
+
+Los test se pueden ejecutar con:
+* Seleccionar proyecto > Run As... > Maven test
+* Seleccionar clase de prueba > Run As... > jUnit test
