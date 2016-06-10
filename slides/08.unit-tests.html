@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Pruebas unitarias con JUnit</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1 style="text-transform:none">Pruebas unitarias con</h1>
+					<img src="img/junit-logo.png" height="128" width="320">
+				</section>
+
+				<section>
+					<p>JUnit es un framework para realizar y automatizar pruebas de aplicaciones Java. Especificamente automatiza la ejecución de pruebas unitarias.</p>
+				</section>
+
+				<section>
+					<section>
+						<h2>Pruebas Unitarias</h2>
+					</section>
+					<section>
+						<p>Una prueba unitaria es un método que prueba una unidad de código. Al hablar de una unidad de código nos referimos a un requerimiento. Generalmente un requerimiento o funcionalidad se desarrolla en una porción de código delimitada por un método.</p>
+					</section>
+					<section>
+						<p>Las pruebas unitarias deben ser:</p>
+						<ul>
+							<li><strong>Independientes:</strong> No debe depender ni afectar a otras pruebas unitarias.</li>
+							<li><strong>Automatizable: </strong>La prueba no debería requerir intervención manual.</li>
+							<li><strong>Repetible y predecible: </strong>No debe incidir el orden y las veces que se repita la prueba, el resultado siempre debe ser el mismo.</li>
+						</ul>
+					</section>
+					<section>
+						<p>Ventajas:</p>
+						<ul>
+							<li><strong>Fomentan el cambio: </strong> Facilitan la refactorización y modificación segura del código puesto que permiten hacer pruebas sobre los cambios y verificar que las modificaciones no han introducido errores.</li>
+							<li><strong>Simplifican la integración:</strong> Permiten llegar a la fase de integración asegurando que las partes individuales funcionan correctamente. De esta manera se facilitan las pruebas de integración.</li>
+							<li><strong>Menos errores y más fáciles de localizar:</strong> las pruebas unitarias reducen la cantidad de errores y el tiempo en localizarlos.</li>
+
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>JUnit y Maven</h2>
+					</section>
+					<section>
+						<p>Todo proyecto maven viene incorporado con el plugin <em>surefire</em>, este plugin tiene un goal llamado <em>test</em> que está enlazado a la fase <em>test</em> del ciclo de vida <em>default</em>. El plugin surefire puede trabajar por defecto con los frameworks de pruebas JUnit y TestNG.</p>
+						<p>El goal <em>test</em> ejecuta todas las pruebas unitarias en la fase de test del ciclo de vida default.</p>
+					</section>
+					<section>
+						<p>Agregando JUnit a nuestro proyecto</p>
+						<pre><code class="xml">
+&lt;dependency&gt;
+	&lt;groupId&gt;junit&lt;/groupId&gt;
+	&lt;artifactId&gt;junit&lt;/artifactId&gt;
+	&lt;version&gt;4.12&lt;/version&gt;
+	&lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<img src="img/junit-logo.png" height="128" width="320">
+					</section>
+					<section>
+						<h2>Anotaciones</h2>
+					</section>
+					<section>
+						<h3 style="text-transform:none">@Test</h3>
+						<p>Se usa para indicar que un método será ejecutado como una prueba de JUnit.</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">@BeforeClass y @AfterClass</h3>
+						<p>Solo debe haber un método de cada una de estas anotaciones por clase, el método @BeforeClass es invocado una vez cuando inician las pruebas de la clase y el @AfterClass una sola vez cuando culminan todas las pruebas de la clase.</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">@Before y @After</h3>
+						<p>Estos métodos se ejecutan antes (@Before) y después (@After) de cada método de prueba de una clase.</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">@Ignore</h3>
+						<p>Los métodos marcados con esta anotación no serán ejecutados. Se suelen colocar para desactivar las pruebas que no pueden ser realizadas por algún motivo.</p>
+					</section>
+					<section>
+						<h3>Aserciones</h3>
+						<p>Una aserción es una afirmación de que un método debe ejecutarse y retornar resultados de la manera esperada.</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">assertEquals</h3>
+						<p>Verifica que dos primitivos/objetos son iguales, en el caso de objetos utiliza internamente el método <em>equals</em></p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">assertTrue</h3>
+						<p>Verifica que una condición sea verdadera</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">assertFalse</h3>
+						<p>Verifica que una condición sea falsa</p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">assertNotNull</h3>
+						<p>Verifica que un objeto no sea <em>null</em></p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">assertNull</h3>
+						<p>Verifica que un objeto sea <em>null</em></p>
+					</section>
+					<section>
+						<h3 style="text-transform:none">assertSame</h3>
+						<p>Verifica que dos referencias aputen hacía el mismo objeto. Internamente utiliza el operador de comparación '==' en los objetos pasados por parámetro.</p>
+					</section>
+				</section>
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
