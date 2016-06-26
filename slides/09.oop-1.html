@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Programación Orientada a Objetos</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Programación Orientada a Objetos</h1>
+				</section>
+
+				<section>
+					<h2>Paradigmas de Programación</h2>
+					<img src="img/paradigmas.jpg">
+				</section>
+
+				<section>
+					<section>
+						<h2>Clase</h2>
+						<p>Es una plantilla desde la cuál se crearan objetos, define el estado (atributos) y comportamiento (métodos) que poseeran los objetos que se creen a partir de esta plantilla.</p>
+					</section>
+					<section>
+						<h2>Objeto</h2>
+						<p>Es la instancia de una clase, posee una copia de los atributos (de instancia) definidos en la clase.</p>
+					</section>
+					<section>
+						<h2>Clase vs Objeto</h2>
+						<img src="img/poo/clase-gelatina.jpg">
+						<img src="img/poo/objeto-gelatina.jpg">
+					</section>
+					<section>
+						<h3>Objetos:</h3>
+						<ul>
+							<li>Elementos con comportamiento y estado. Métodos y atributos concretos</li>
+							<li>Instancias de clase</li>
+							<li>Interactuan por medio de mensajes</li>
+						</ul>
+						<h3>Clases</h3>
+						<li>Plantillas para definir elementos (objetos)</li>
+					</section>
+					<section>
+						<pre><code class="java">
+class Persona {
+	String nombre;
+	String apellido;
+	void caminar(int pasos);
+}
+Persona per1 = new Persona();
+per1.nombre = "Juan";
+per1.apellido = "Carrión";
+
+Persona per2 = new Persona();
+per2.nombre = "Fabio";
+per2.apellio = "Arias";
+
+per1.caminar(2);
+per2.caminar(3);
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Abstracción</h2>
+						<p>Podemos definir la abstracción como una operación intelectual que separa las cualidades de un objeto para considerarlas aisladamente o para analizar al objeto en su pura esencia o noción.</p>
+						<p>Gracias a la abstracción podemos representar las características esenciales (dependiendo del contexto) de un objeto sin preocuparnos de las restantes características (no esenciales).</p>
+					</section>
+					<section>
+<pre><code class="java">// Abstrayendo la clase Cliente para un sistema
+// de aprobación de préstamos
+class Cliente {
+	String dni;
+	String nombre;
+	String apellido;
+	double sueldo;
+	boolean poseePropiedades;
+}
+// Abstrayendo la clase Cliente (Alumno) para un sistema
+// de matricula universitaria
+class Cliente {
+	String dni;
+	String nombre;
+	String apellido;
+	String codigoUniversitario;
+	int codigoFacultad;
+}
+</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Encapsulamiento</h2>
+						<p>Es el ocultamiento del estado (atributos) del objeto, de manera que solo se pueda modificar este estado mediante las operaciones definidas para ese objeto.</p>
+					</section>
+					<section>
+						<table>
+							<tr>
+								<th id="h1">Modificador</th>
+								<th id="h2">Clase</th>
+								<th id="h3">Paquete</th>
+								<th id="h4">Subclases</th>
+								<th id="h5">Mundo</th>
+							</tr>
+							<tr>
+								<td headers="h1"><code>public</code></td>
+								<td headers="h2">Y</td>
+								<td headers="h3">Y</td>
+								<td headers="h4">Y</td>
+								<td headers="h5">Y</td>
+							</tr>
+							<tr>
+								<td headers="h1"><code>protected</code></td>
+								<td headers="h2">Y</td>
+								<td headers="h3">Y</td>
+								<td headers="h4">Y</td>
+								<td headers="h5">N</td>
+							</tr>
+							<tr>
+								<td headers="h1" style="font-style: italic">Sin modificador</td>
+								<td headers="h2">Y</td>
+								<td headers="h3">Y</td>
+								<td headers="h4">N</td>
+								<td headers="h5">N</td>
+							</tr>
+							<tr>
+								<td headers="h1"><code>private</code></td>
+								<td headers="h2">Y</td>
+								<td headers="h3">N</td>
+								<td headers="h4">N</td>
+								<td headers="h5">N</td>
+							</tr>
+						</table>
+					</section>
+					<section>
+						<pre><code class="java">
+public class Factura {
+	private Date fecha;
+	private double montoTotal;
+	public void anadirProducto(Producto producto) {
+		montoTotal += producto.monto;
+	}
+}
+						</code></pre>
+					</section>
+					<section>
+						<h2>Getters y Setters</h2>
+						<p>Métodos estandar para definir la lectura (get) y escritura (set) sobre los atributos de una clase.</p>
+					</section>
+					<section>
+						<pre><code class="java">
+public class Automovil {
+	private int numeroLlantas; // Solo lectura
+	private double combustibleDisponible; // Lectura y escritura
+	public int getNumeroLlantas() {
+		return numeroLlantas;
+	}
+	public double getCombustibleDisponible() {
+		return combustibleDisponible;
+	}
+	public void setCombustibleDisponible(double combustible) {
+		combustibleDisponible = combustible;
+	}
+}
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<img src="img/logo.png">
+					<pre style="width:180px"><code class="java">System.exit(0);</code></pre>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
