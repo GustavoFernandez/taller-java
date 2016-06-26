@@ -16,7 +16,7 @@ public class StringUtil {
 	 * Ejemplo: "juan".capitalize() : "Juan"
 	 * 
 	 * @since 1.0
-	 * @param source:
+	 * @param source
 	 *            cadena que se le aplicará el capitalize
 	 * @return Cadena que le aplico capitalize
 	 */
@@ -36,7 +36,7 @@ public class StringUtil {
 	 * Trunca una cadena a un máximo de caracteres
 	 * 
 	 * @since 1.1
-	 * @param cadena:
+	 * @param cadena
 	 *            cadena a truncar
 	 * @param maximoCaracteres:
 	 *            número máximo de caracteres de la nueva cadena
@@ -86,6 +86,9 @@ public class StringUtil {
 	 * @return retorna la cadena invertida
 	 */
 	public static String reverse(String cadena) {
+		if (cadena == null) {
+			return cadena;
+		}
 		String resultado = "";
 		for (int i = cadena.length() - 1; i >= 0; i--) {
 			resultado += cadena.charAt(i);
@@ -99,8 +102,8 @@ public class StringUtil {
 	 * que tenga esa cadena. Una palabra es cada conjunto de caracteres
 	 * separados por un espacio.
 	 * 
-	 * Ejm: StringUtil.capitalizeAllWords("hola mundo") -> "Hola Mundo"
-	 * StringUtil.capitalizeAllWords(" java wOrld") -> " Java World"
+	 * Ejm: StringUtil.capitalizeAllWords("hola mundo") == "Hola Mundo"
+	 * StringUtil.capitalizeAllWords(" java wOrld") == " Java World"
 	 * 
 	 * @since 1.2
 	 * @param cadena:
@@ -108,13 +111,15 @@ public class StringUtil {
 	 * @return String con palabras internas aplicadas capitalize
 	 */
 	public static String capitalizeAllWords(String cadena) {
+		if (cadena == null) {
+			return cadena;
+		}
 		boolean esInicioDePalabra = true;
 		String resultado = "";
 		for (int i = 0; i < cadena.length(); i++) {
 			char caracterActual = cadena.charAt(i);
 
-			char caracterTransformado = esInicioDePalabra
-					? Character.toUpperCase(caracterActual)
+			char caracterTransformado = esInicioDePalabra ? Character.toUpperCase(caracterActual)
 					: Character.toLowerCase(caracterActual);
 
 			boolean esEspacioEnBlanco = Character.isWhitespace(caracterActual);
@@ -124,4 +129,68 @@ public class StringUtil {
 		}
 		return resultado;
 	}
+
+	/**
+	 * 
+	 * Dada una cadena remueve todos los espacios en blanco redundantes (más de
+	 * un espacio se convierte en solo un espacio) dentro de la cadena, además
+	 * remueve los espacios en blanco a los extremos de la cadena.
+	 *
+	 * @since 1.2
+	 * @param cadena:
+	 *            Cadena a ser procesada
+	 * @return cadena con caracteres en blanco de los extremos removidos y
+	 *         espacios en blanco redundantes internos convertidos a solo un
+	 *         espacio.
+	 */
+	public static String fullTrim(String cadena) {
+		if (cadena == null) {
+			return cadena;
+		}
+		String cadenaFinal = "";
+		cadena = cadena.trim();
+		for (int i = 0; i < cadena.length(); i++) {
+			char caracterActual = cadena.charAt(i);
+			if (i == 0) {
+				cadenaFinal += caracterActual;
+				continue;
+			}
+			char caracterAnterior = cadena.charAt(i - 1);
+			boolean eresEspacio = Character.isWhitespace(caracterActual);
+			boolean anteriorFueEspacio = Character.isWhitespace(caracterAnterior);
+			if (!(eresEspacio && anteriorFueEspacio)) {
+				cadenaFinal += caracterActual;
+			}
+		}
+		return cadenaFinal;
+	}
+
+	/**
+	 * 
+	 * Convierte en mayusculas los caracteres de la cadena que esten en
+	 * minusculas y viceversa.
+	 *
+	 * @since 1.2
+	 * @param cadena
+	 *            Cadena a aplicar swapCase
+	 * @return cadena transformada
+	 */
+	public static String swapCase(String cadena) {
+		if (cadena == null) {
+			return cadena;
+		}
+		String cadenaFinal = "";
+		for (int i = 0; i < cadena.length(); i++) {
+			char caracterActual = cadena.charAt(i);
+			char caracterTransformado;
+			if (Character.isUpperCase(caracterActual)) {
+				caracterTransformado = Character.toLowerCase(caracterActual);
+			} else {
+				caracterTransformado = Character.toUpperCase(caracterActual);
+			}
+			cadenaFinal += caracterTransformado;
+		}
+		return cadenaFinal;
+	}
+
 }

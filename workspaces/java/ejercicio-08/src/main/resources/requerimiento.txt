@@ -1,0 +1,26 @@
+Ejercicio 08
+============
+
+Crear un proyecto que tenga como nombre de artefacto ejercicio-08.
+En este proyecto proyecto se deberá implementar el siguiente requerimiento:
+Se desea tener un programa que reciba por consola las notas (enteros)
+y nombres (cadenas) de 3 alumnos y los almacené en un(os) arreglo(s),
+una vez que se terminen de leer estos datos, se deberán iterar los datos
+y mostrarlos en consola tal como se muestra a continuación.
+
+> Ingrese el nombre del alumno 1
+Gustavo Fernández
+> Ingrese la nota del alumno 1
+12
+> Ingrese el nombre del alumno 2
+Luis Ávila
+> Ingrese la nota del alumno 2
+15
+> Ingrese el nombre del alumno 3
+Roberto Torres
+> Ingrese la nota del alumno 3
+11
+
+El nombre del alumno 1 es Gustavo Fernández y su nota es 12
+El nombre del alumno 2 es Luis Ávila y su nota es 15
+El nombre del alumno 3 es Roberto Torres y su nota es 11

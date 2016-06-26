@@ -19,6 +19,13 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>c3p0</groupId> -->
+		<!-- <artifactId>c3p0</artifactId> -->
+		<!-- <version>9.1.2</version> -->
+		<!-- <scope>system</scope> -->
+		<!-- <systemPath>D:\c3p0-0.9.1.2.jar</systemPath> -->
+		<!-- </dependency> -->
 	</dependencies>
 
 	<build>
@@ -47,6 +54,19 @@
 						<phase>package</phase>
 						<goals>
 							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-clean-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>ejecuta-plugin-clean-cuando-haces-initialize</id>
+						<phase>initialize</phase>
+						<goals>
+							<goal>clean</goal>
 						</goals>
 					</execution>
 				</executions>
