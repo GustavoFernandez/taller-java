@@ -1,0 +1,20 @@
+Ejercicio 07
+============
+
+Crear un proyecto que tenga como nombre de artefacto ejercicio-07. En este proyecto proyecto se deberá implementar el siguiente requerimiento:
+Se desea tener un programa que reciba por consola el nombre de un alumno y sus 3 notas, luego de recibir estos datos el programa debe mostrar un mensaje con el nombre del alumno y el promedio de las 3 notas, si el promedio es menor o igual a 10 mostrará el mensaje reprobado, sino mostrará el mensaje aprobado.
+
+Además aplicar un capitalizeAllWords y un fullTrim al nombre del alumno, de manera que si el usuario de la aplicación ingresa el nombre con espacios y/o en todo mínusculas la salida sea más elegante.
+
+Ejm:
+
+> Ingrese el nombre del alumno
+diego    torres
+> Ingrese la nota 1 del alumno
+12
+> Ingrese la nota 2 del alumno
+8
+> Ingrese la nota 3 del alumno
+10
+
+El nombre del alumno es Diego Torres y su promedio final es 10.0, el alumno ha reprobado.

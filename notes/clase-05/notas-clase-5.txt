@@ -1,0 +1,10 @@
+Crear archivo vacio consola Windows
+COPY NUL .gitignore
+
+remover archivos/carpetas del repositorio, manteniendolos en el sistema de archivos
+git rm -r --cached CARPETA
+
+
+.gitignore -> Archivos / carpetas que le decimos a git que ignore
+
+control folders
