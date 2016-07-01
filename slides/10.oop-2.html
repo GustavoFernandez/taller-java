@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="es">
+	<head>
+		<meta charset="utf-8">
+		<title>Programación Orientada a Objetos II</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/beige.css" id="theme">
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h1>Programación Orientada a Objetos II</h1>
+				</section>
+
+				<section>
+					<section>
+						<h2>Composición</h2>
+					</section>
+					<section>
+						Es la forma de combinar objetos de manera que formamos objetos complejos que contienen otros objetos. en la composición se crea una relación "has-a" (tiene un) entre el objeto que contiene al otro objeto.
+					</section>
+					<section>
+						<img src="img/poo/composition.png" width="100%">
+					</section>
+					<section>
+						<pre><code class="java">
+import java.util.Date;
+
+public class Factura {
+	private Date fechaEmision;
+	private Item[] item;
+	// getters and setters
+}
+public class Item {
+	private Producto producto;
+	private double cantidad;
+	// getters and setters
+}
+public class Producto {
+	private long codigo;
+	private String descripcion;
+	private double precio;
+	// getters and setters
+}
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Herencia</h2>
+					</section>
+					<section>
+						Se puede definir como el proceso mediante el cual una clase adquiere caracteristicas definidas en otra clase. La clase de la que se hereda se la conoce como super clase y la que hereda las caracteristicas de esta se le conoce como sub clase. Con la herencia se forma una relación "is-a" (es un).
+					</section>
+					<section>
+						<img src="img/poo/inheritance.png" width="100%">
+					</section>
+					<section>
+						<pre><code class="java">
+// Cuando se tiene un método abstract la clase obligatoriamente debe ser declarada abstract
+public abstract class FiguraGeometrica {
+	protected void dibujar() {
+	}
+	// abstract se define el método para que las subclases lo implementen.
+	public abstract double calcularArea();
+}
+// final aplicado a una clase hace que la clase no pueda ser heredada
+public final class Triangulo extends FiguraGeometrica {
+	public double calcularArea() {
+	}
+}
+public class Cuadrado extends FiguraGeometrica {
+// final aplicado a un método hace que el método no pueda ser sobreescrito en alguna subclase
+	protected final void dibujar() {
+	}
+	public double calcularArea() {
+	}
+}
+						</code></pre>
+					</section>
+					<section>
+						<h3 style="text-transform:none;">toString()</h3>
+						<p>Toda clase en Java hereda implicitamente de la clase <em>java.lang.Object</em>, con lo cual toda clase de adquiere un conjunto de elementos que define Object, uno de ellos es el método toString() que usualmente se usa para dar una representación en String del objeto. nosotros podemos sobreescribir el método toString() para dar una representación más acorde al objeto que estamos creando.</p>
+					</section>
+					<section>
+						<pre><code class="java">
+class Empleado {
+	private String dni;
+	private String nombre;
+	public String toString() {
+		return "Empleado: [ dni: " + dni + ", nombre: " + nombre + "]";
+	}
+}
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Atajos de Eclipse</h2>
+					</section>
+					<section>
+						<h3>Generar getters y setters</h3>
+						<p>Clic derecho en la vista de código > Source > Generate Getters and Setters...</p>
+						<img src="img/oop-eclipse/getters-and-setters.png" width="100%">
+					</section>
+					<section>
+						<p>Seleccionamos los campos que deseamos encapsular y clic en Ok</p>
+						<img src="img/oop-eclipse/getters-and-setters-2.jpg" width="100%">
+					</section>
+					<section>
+						<img src="img/oop-eclipse/getters-and-setters-3.png" height="100%">
+					</section>
+					<section>
+						<h3>Generar <span style="text-transform:none">toString()</span></h3>
+						<p>Clic derecho en la vista de código > Source > Generate toString()...</p>
+						<img src="img/oop-eclipse/to-string-1.png" width="100%">
+					</section>
+					<section>
+						<p>Seleccionamos los campos que deseamos mostrar en el toString()</p>
+						<img src="img/oop-eclipse/to-string-2.png" width="100%">
+					</section>
+					<section>
+						<img src="img/oop-eclipse/to-string-3.png" height="100%">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Interfaces</h2>
+					</section>
+					<section>
+						<p>Generalmente usadas para definir las funcionalidades que tendrá la clase que implemente dicha interface, hasta antes de Java 8 las interfaces solo permitian el uso de métodos abstractos en su definición. Java 8 introduce el modificador default para implementar métodos en una interfaz lo que permite una especie de herencia múltiple en cuanto a métodos más no atributos.</p>
+					</section>
+					<section>
+						<pre><code class="java">
+public interface UserService {
+	void createUser(User user);
+	User getUserById(Long idUser);
+	User[] findAll();
+	default int generatePassword() {
+		return (int) (Math.random() * 1_000_000);
+	}
+}
+public class MyUserService implements UserService {
+	public void createUser(User user) {
+	}
+	public User getUserById(Long idUser) {
+	}
+	public User[] findAll() {
+	}
+}
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h3>Polimorfismo</h3>
+					</section>
+					<section>
+						<p>Polimorfismo se refiere a la característica de una referencia de comportarese de distintas formas. Lo veremos mejor con el siguiente ejemplo.</p>
+						<pre><code class="java">
+public class RandomGenerator {
+	int generateNumber() {
+		System.out.println("RandomGenerator");
+		return 0;
+	}
+}
+public class EvenRandomGenerator extends RandomGenerator {
+	@Override
+	int generateNumber() {
+		System.out.println("EvenRandomGenerator");
+		return ((int) (Math.random() * 1_000_000)) * 2;
+	}
+}
+public class OddRandomGenerator extends RandomGenerator {
+	@Override
+	int generateNumber() {
+		System.out.println("OddRandomGenerator");
+		return (((int) (Math.random() * 1_000_000)) * 2) + 1;
+	}
+}
+public class Main {
+	public static void main(String[] args) {
+		RandomGenerator generator = new RandomGenerator();
+		System.out.println(generator.generateNumber());
+
+		generator = new EvenRandomGenerator();
+		System.out.println(generator.generateNumber());
+
+		generator = new OddRandomGenerator();
+		System.out.println(generator.generateNumber());
+	}
+}
+						</code></pre>
+					</section>
+					<section>
+						<p>
+							Como vimos la misma referencia invoco métodos distintos en cada llamado. The JVM llama el método apropiado para el objeto que esta referenciando la variable en cada momento. No llama al método del tipo de la variable, sino al método del tipo del objeto. En los 3 casos el tipo de la variable es RandomGenerator, sin embargo el tipo del objeto en el primer caso es RandomGenerator, en el segundo es EvenRandomGenerator y en el tercero OddRandomGenerator. Este comportamiento se conoce como Virtual method invocation y demuestra así el uso del polimorfismo en el lenguaje Java.
+						</p>
+					</section>
+				</section>
+
+				<section>
+					<img src="img/logo.png">
+					<pre style="width:180px"><code class="java">System.exit(0);</code></pre>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

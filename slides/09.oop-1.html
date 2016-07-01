@@ -188,6 +188,43 @@ public class Automovil {
 				</section>
 
 				<section>
+					<section>
+						<h2>Constructores</h2>
+					</section>
+					<section>
+						Se utiliza para inicializar atributos que consideramos requeridos en un objeto. El constructor <strong>NO</strong> es un método, no tiene tipo de retorno y debe tener como nombre el mismo nombre de la clase.
+					</section>
+					<section>
+						<pre><code class="java">
+public class Empleado {
+	private String dni;
+	private String nombreCompleto;
+	private int numeroHijos;
+	private Empleado jefe;
+
+	public Empleado(String dni, String nombreCompleto) {
+		this.dni = dni;
+		this.nombreCompleto = nombreCompleto;
+	}
+
+	// getters and setters
+}
+
+Empleado emp = new Empleado("15264578", "Adriano");
+Empleado emp = new Empleado("58469253", "David");
+						</code></pre>
+					</section>
+					<section>
+						Cuando no se define un constructor explicitamente, el compilador añade un constructor sin parámetros (Constructor por defecto). Si definimos cualquier constructor explicitamente el compilador no añade constructores adicionales.
+						<pre><code class="java">
+public class Empresa {
+}
+Empresa emp = new Empresa();
+						</code></pre>
+					</section>
+				</section>
+
+				<section>
 					<img src="img/logo.png">
 					<pre style="width:180px"><code class="java">System.exit(0);</code></pre>
 				</section>
