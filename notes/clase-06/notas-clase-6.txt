@@ -1,0 +1,21 @@
+Inicializacion de atributos globales
+(Similar a inicializacion de valores en un arreglo)
+
+byte, short, int, long -> 0
+float, double -> 0.0
+boolean -> false
+character -> ' '
+Object y derivados -> null
+
+Los arreglos también son objetos
+
+
+Object es super clase Persona
+Persona es una sub clase de Object
+
+
+Si tu clase tiene metodos abstract, entonces tu clase también debe ser abstract
+
+final a una variable convierte a esta en una constante
+final aplicado a una clase, hace que esta no pueda ser heredada
+final aplicado a un método hace que este no pueda ser sobreescrito
